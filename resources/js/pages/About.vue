@@ -1,7 +1,7 @@
 <template>
     <Default>
-        <template v-slot:app-bar>
-            <app-bar></app-bar>
+        <template v-slot:sidebar>
+            <Sidebar></Sidebar>
         </template>
 
         <template>
@@ -12,12 +12,12 @@
 
 <script>
 import Default from "../layouts/Default.vue";
-import AppBar from "../components/AppBar.vue";
+import Sidebar from "../components/Sidebar.vue";
 
 export default {
     components: {
         Default,
-        AppBar
+        Sidebar
     }
 };
 </script>

@@ -4,7 +4,9 @@
 
 <script>
 export default {
-    created() {}
+    created() {
+        this.$store.dispatch("item/index");
+    }
 };
 </script>
 
@@ -12,5 +14,8 @@ export default {
 html,
 body {
     overflow-x: hidden;
+}
+.v-list-item__title {
+    text-decoration: none;
 }
 </style>

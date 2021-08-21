@@ -23,8 +23,8 @@ class CreateFieldsTable extends Migration
             $table->boolean('options');
         });
 
-        $default = array(   ['name' => 'name',      'header' => 'Erscheinungsjahr',     'component' => "text",      'options' => true],
-                            ['name' => 'status',    'header' => 'Status',   'component' => "select",    'options' => false]);
+        $default = array(   ['name' => 'releaseYear',   'header' => 'Erscheinungsjahr',     'component' => "text",      'options' => true],
+                            ['name' => 'status',        'header' => 'Status',               'component' => "select",    'options' => false]);
 
         foreach ($default as $value){
             DB::table('fields')->insert([

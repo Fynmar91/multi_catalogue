@@ -1,7 +1,9 @@
-import media from "./media";
+import item from "./item";
+import field from "./field";
 
 export default {
     modules: {
-        media
+        item,
+        field
     }
 };

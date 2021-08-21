@@ -23,7 +23,10 @@ class CreateHierarchiesTable extends Migration
             $table->foreign('child_id')->references('id')->on('items');
         });
 
-        $default = array(   ['parent_id' => 1,  'child_id' => 2]);
+        $default = array(   ['parent_id' => 1,  'child_id' => 3],
+                            ['parent_id' => 2,  'child_id' => 4],
+                            ['parent_id' => 4,  'child_id' => 5],
+                            ['parent_id' => 4,  'child_id' => 6]);
 
         foreach ($default as $value){
             DB::table('hierarchies')->insert([

@@ -1,6 +1,6 @@
 <template>
-    <v-app id="inspire">
-        <slot name="app-bar"></slot>
+    <v-app>
+        <slot name="sidebar"></slot>
 
         <v-main class="ma-3">
             <slot></slot>

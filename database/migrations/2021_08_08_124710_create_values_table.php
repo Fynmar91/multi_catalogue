@@ -24,8 +24,10 @@ class CreateValuesTable extends Migration
             $table->foreign('field_id')->references('id')->on('fields');
         });
 
-        $default = array(   ['value' => '2008',     'item_id' => 2,   'field_id' => 1],
-                            ['value' => 'Fertig',   'item_id' => 2,   'field_id' => 2]);
+        $default = array(   ['value' => '2012',         'item_id' => 3,   'field_id' => 1],
+                            ['value' => 'Fertig',       'item_id' => 3,   'field_id' => 2],
+                            ['value' => '2008',         'item_id' => 4,   'field_id' => 1],
+                            ['value' => 'Angefangen',   'item_id' => 4,   'field_id' => 2]);
 
         foreach ($default as $value){
             DB::table('values')->insert([

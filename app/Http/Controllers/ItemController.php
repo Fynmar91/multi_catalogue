@@ -14,7 +14,21 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
+        $items = Item::where('level', 0)->get();
+
+        return $items;
+    }
+
+    /**
+     * Display a listing of the resource at certain level.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function items(Item $item)
+    {
+        $items = Item::where('id', $item->id)->first()->children;
+
+        return $items;
     }
 
     /**
@@ -46,7 +60,7 @@ class ItemController extends Controller
      */
     public function show(Item $item)
     {
-        //
+        return Item::with('children', 'children.dates', 'tags', 'values.field', 'parents.templates.field')->where('id', $item->id)->first();
     }
 
     /**

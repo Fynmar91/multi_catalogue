@@ -27,8 +27,10 @@ class CreateTemplatesTable extends Migration
             $table->foreign('field_id')->references('id')->on('fields');
         });
 
-        $default = array(   ['align' => 'start',   'order' => '0',  'filterable' => true,       'active' => true,  'item_id' => 2,  'field_id' => 1],
-                            ['align' => 'start',   'order' => '1',  'filterable' => false,      'active' => true,  'item_id' => 2,  'field_id' => 2]);
+        $default = array(   ['align' => 'start',   'order' => '0',  'filterable' => true,       'active' => true,  'item_id' => 1,  'field_id' => 1],
+                            ['align' => 'start',   'order' => '1',  'filterable' => false,      'active' => true,  'item_id' => 1,  'field_id' => 2],
+                            ['align' => 'start',   'order' => '1',  'filterable' => true,       'active' => true,  'item_id' => 2,  'field_id' => 1],
+                            ['align' => 'start',   'order' => '0',  'filterable' => false,      'active' => true,  'item_id' => 2,  'field_id' => 2]);
 
         foreach ($default as $value){
             DB::table('templates')->insert([

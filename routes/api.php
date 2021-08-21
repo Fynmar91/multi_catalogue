@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\ItemController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::group(['prefix' => 'item'], function () {
+    Route::get('/', [ItemController::class, 'index']);
+    Route::get('/items/{item}', [ItemController::class, 'items']);
+    Route::get('/create', [ItemController::class, 'create']);
+    Route::post('/', [ItemController::class, 'store']);
+    Route::get('/{item}', [ItemController::class, 'show']);
+    Route::get('/{item}/edit', [ItemController::class, 'edit']);
+    Route::put('/{item}', [ItemController::class, 'update']);
+    Route::delete('/{item}', [ItemController::class, 'destroy']);
 });
