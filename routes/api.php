@@ -22,7 +22,7 @@ use App\Http\Controllers\ItemController;
 
 Route::group(['prefix' => 'item'], function () {
     Route::get('/', [ItemController::class, 'index']);
-    Route::get('/items/{item}', [ItemController::class, 'items']);
+    Route::get('/list/{item}', [ItemController::class, 'list']);
     Route::get('/create', [ItemController::class, 'create']);
     Route::post('/', [ItemController::class, 'store']);
     Route::get('/{item}', [ItemController::class, 'show']);

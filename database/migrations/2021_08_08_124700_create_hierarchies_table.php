@@ -26,7 +26,8 @@ class CreateHierarchiesTable extends Migration
         $default = array(   ['parent_id' => 1,  'child_id' => 3],
                             ['parent_id' => 2,  'child_id' => 4],
                             ['parent_id' => 4,  'child_id' => 5],
-                            ['parent_id' => 4,  'child_id' => 6]);
+                            ['parent_id' => 4,  'child_id' => 6]
+                        );
 
         foreach ($default as $value){
             DB::table('hierarchies')->insert([

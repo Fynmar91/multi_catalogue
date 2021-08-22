@@ -20,15 +20,16 @@ class CreateItemsTable extends Migration
             $table->string('icon')->nullable();
             $table->boolean('active');
             $table->integer('level');
-            $table->integer('type')->nullable();
+            $table->integer('type');
         });
 
-        $default = array(   ['name' => 'Filme',         'icon' => 'mdi-check',  'active' => true,   'level' => 0],
-                            ['name' => 'Serien',        'icon' => 'mdi-play',   'active' => true,   'level' => 0],
-                            ['name' => 'Joker',         'icon' => NULL,         'active' => true,   'level' => 1],
-                            ['name' => 'Breaking Bad',  'icon' => NULL,         'active' => true,   'level' => 1],
-                            ['name' => 'Episode 1',     'icon' => NULL,         'active' => true,   'level' => 2],
-                            ['name' => 'Episode 2',     'icon' => NULL,         'active' => true,   'level' => 2],);
+        $default = array(   ['name' => 'Filme',         'icon' => 'mdi-check',  'active' => true,   'level' => 0,   'type' => 0],
+                            ['name' => 'Serien',        'icon' => 'mdi-play',   'active' => true,   'level' => 0,   'type' => 0],
+                            ['name' => 'Joker',         'icon' => NULL,         'active' => true,   'level' => 1,   'type' => 0],
+                            ['name' => 'Breaking Bad',  'icon' => NULL,         'active' => true,   'level' => 1,   'type' => 0],
+                            ['name' => 'Episode 1',     'icon' => NULL,         'active' => true,   'level' => 2,   'type' => 0],
+                            ['name' => 'Episode 2',     'icon' => NULL,         'active' => true,   'level' => 2,   'type' => 0],
+                        );
 
         foreach ($default as $value){
             DB::table('items')->insert([
@@ -36,6 +37,7 @@ class CreateItemsTable extends Migration
                 'icon' => $value['icon'],
                 'active' => $value['active'],
                 'level' => $value['level'],
+                'type' => $value['type'],
                 'created_at' =>  \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now(),
             ]);

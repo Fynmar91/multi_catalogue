@@ -27,7 +27,8 @@ class CreateOptionsTable extends Migration
         $default = array(   ['value' => 'Fertig',        'icon' => 'mdi-check',         'active' => true,   'field_id' => 2],
                             ['value' => 'Angefangen',    'icon' => 'mdi-play',          'active' => true,   'field_id' => 2],
                             ['value' => 'Abgebrochen',   'icon' => 'mdi-stop',          'active' => true,   'field_id' => 2],
-                            ['value' => 'Warteschlange', 'icon' => 'mdi-list-status',   'active' => true,   'field_id' => 2]);
+                            ['value' => 'Warteschlange', 'icon' => 'mdi-list-status',   'active' => true,   'field_id' => 2]
+                        );
 
         foreach ($default as $value){
             DB::table('options')->insert([

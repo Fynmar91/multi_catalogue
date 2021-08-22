@@ -26,7 +26,8 @@ class CreateTimestampsTable extends Migration
         $default = array(   ['date' => '2021-01-6',   'type' => '1',  'item_id' => 5],
                             ['date' => '2021-01-7',   'type' => '1',  'item_id' => 6],
                             ['date' => '2021-08-14',   'type' => '1',  'item_id' => 5],
-                            ['date' => '2021-08-15',   'type' => '1',  'item_id' => 6],);
+                            ['date' => '2021-08-15',   'type' => '1',  'item_id' => 6],
+                        );
 
         foreach ($default as $value){
             DB::table('timestamps')->insert([

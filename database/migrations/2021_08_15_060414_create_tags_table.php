@@ -27,7 +27,8 @@ class CreateTagsTable extends Migration
                             ['name' => 'DC',            'type' => '2',  'item_id' => 3],
                             ['name' => 'Crime',         'type' => '1',  'item_id' => 4],
                             ['name' => 'Thriller',      'type' => '1',  'item_id' => 4],
-                            ['name' => 'Drama',         'type' => '1',  'item_id' => 4],);
+                            ['name' => 'Drama',         'type' => '1',  'item_id' => 4],
+                        );
 
         foreach ($default as $value){
             DB::table('tags')->insert([

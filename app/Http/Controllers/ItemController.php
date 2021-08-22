@@ -24,7 +24,7 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function items(Item $item)
+    public function list(Item $item)
     {
         $items = Item::where('id', $item->id)->first()->children;
 

@@ -4,70 +4,20 @@
             <Sidebar></Sidebar>
         </template>
 
+        <template v-slot:image>
+            <Banner></Banner>
+        </template>
+
+        <template v-slot:bar>
+            <Toolbar></Toolbar>
+        </template>
+
         <template>
-            <h1>View</h1>
-            <h2>{{ show.name }}</h2>
+            <FieldBox></FieldBox>
+        </template>
 
-            <FieldText
-                v-if="show.values != null"
-                v-bind:value="show.values[0].value"
-                v-bind:header="show.values[0].field.header"
-            />
-
-            <v-simple-table dense class="mb-3">
-                <template v-slot:default>
-                    <thead>
-                        <tr>
-                            <th class="text-left" style="width: 50px">
-                                ID
-                            </th>
-                            <th class="text-left" style="width: 100px">
-                                Name
-                            </th>
-                            <th class="text-left" style="width: 100px">
-                                Datum
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody v-if="show != null">
-                        <tr v-for="item in show.children" :key="item.id">
-                            <td>{{ item.id }}</td>
-                            <td>{{ item.name }}</td>
-                            <td>
-                                {{
-                                    item.dates[
-                                        item.dates.length - 1
-                                    ].date.split(" ")[0]
-                                }}
-                            </td>
-                        </tr>
-                    </tbody>
-                </template>
-            </v-simple-table>
-            <v-simple-table v-if="show.tags != null" dense>
-                <template v-slot:default>
-                    <thead>
-                        <tr>
-                            <th class="text-left" style="width: 50px">
-                                ID
-                            </th>
-                            <th class="text-left" style="width: 100px">
-                                Name
-                            </th>
-                            <th class="text-left" style="width: 100px">
-                                Type
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="item in show.tags" :key="item.id">
-                            <td>{{ item.id }}</td>
-                            <td>{{ item.name }}</td>
-                            <td>{{ item.type }}</td>
-                        </tr>
-                    </tbody>
-                </template>
-            </v-simple-table>
+        <template v-slot:episodes>
+            <Episodes></Episodes>
         </template>
     </Default>
 </template>
@@ -75,14 +25,19 @@
 <script>
 import Default from "../layouts/Default.vue";
 import Sidebar from "../components/Sidebar.vue";
-
-import FieldText from "../components/fields/FieldText.vue";
+import Banner from "../components/Banner.vue";
+import Toolbar from "../components/Toolbar.vue";
+import FieldBox from "../components/FieldBox.vue";
+import Episodes from "../components/Episodes.vue";
 
 export default {
     components: {
         Default,
         Sidebar,
-        FieldText
+        Banner,
+        Toolbar,
+        FieldBox,
+        Episodes
     },
     computed: {
         show: {

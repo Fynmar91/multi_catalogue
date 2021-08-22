@@ -22,7 +22,7 @@ export default {
     computed: {
         categories: {
             get() {
-                return this.$store.state.item.list;
+                return this.$store.state.item.categories;
             }
         },
         selectedCategories: {
@@ -36,11 +36,11 @@ export default {
     },
     methods: {
         changed() {
-            this.$store.dispatch("item/fetchItems");
+            this.$store.dispatch("item/buildList");
         }
     },
     created() {
-        this.$store.dispatch("item/fetchItems");
+        this.$store.dispatch("item/buildList");
     }
 };
 </script>

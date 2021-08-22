@@ -1,7 +1,7 @@
 <template>
     <v-list class="grow">
         <v-list-item
-            v-for="item in listItems"
+            v-for="item in list"
             :key="item.id"
             item
             dense
@@ -24,9 +24,9 @@ export default {
         return {};
     },
     computed: {
-        listItems: {
+        list: {
             get() {
-                return this.$store.state.item.items;
+                return this.$store.state.item.list;
             }
         }
     },

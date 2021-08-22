@@ -1,8 +1,8 @@
 export default {
     state: {
-        list: [],
+        categories: [],
         selected: [1, 2],
-        items: [],
+        list: [],
         children: [],
         show: {},
         new: {},
@@ -16,30 +16,30 @@ export default {
             return axios
                 .get(`/api/item/`)
                 .then(res => {
-                    commit("setList", res.data);
+                    commit("setCategories", res.data);
                 })
                 .catch(err => {
                     console.log(err);
                 });
         },
-        fetchItems({ commit, state, dispatch }) {
-            commit("resetItems");
+        buildList({ commit, state, dispatch }) {
+            commit("resetList");
             state.selected.forEach(id => {
-                dispatch("fetchItem", id);
+                dispatch("fetchList", id);
             });
         },
-        fetchItem({ commit, state }, id) {
+        fetchList({ commit, state }, id) {
             return axios
-                .get(`/api/item/items/${id}`)
+                .get(`/api/item/list/${id}`)
                 .then(res => {
-                    state.list.forEach(parent => {
+                    state.categories.forEach(parent => {
                         if (parent.id === id) {
                             res.data.forEach(child => {
                                 child.icon = parent.icon;
                             });
                         }
                     });
-                    commit("setItems", res.data);
+                    commit("setList", res.data);
                 })
                 .catch(err => {
                     console.log(err);
@@ -50,6 +50,7 @@ export default {
                 .get(`/api/item/${id}`)
                 .then(res => {
                     commit("setShow", res.data);
+                    console.log(res.data);
                 })
                 .catch(err => {
                     console.log(err);
@@ -58,17 +59,18 @@ export default {
     },
 
     mutations: {
-        setList(state, data) {
-            state.list = data;
+        setCategories(state, data) {
+            state.categories = data;
         },
         setSelected(state, data) {
             state.selected = data;
         },
-        setItems(state, data) {
-            state.items.push(...data);
+        setList(state, data) {
+            state.list.push(...data);
+            state.list.sort((a, b) => a.name > b.name);
         },
-        resetItems(state) {
-            state.items = [];
+        resetList(state) {
+            state.list = [];
         },
         setShow(state, data) {
             state.show = data;
